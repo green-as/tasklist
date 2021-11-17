@@ -25,7 +25,12 @@ public class IndexServlet extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
+
+    /*↓ブラウザからのhttpリクエスト（getかpostか）よって
+     dogetメソッドが呼び出される
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        /*↓レスポンスとしてクライアントに返すメソッド*/
         response.getWriter().append("Served at: ").append(request.getContextPath());
     }
 
