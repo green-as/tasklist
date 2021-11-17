@@ -7,10 +7,32 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
 @Entity//エンティティクラスであることを指定
+
+/*タスクの内容を一覧表示するための内容
+ * クエリとは問い合わせ
+ * 一件取得する find() メソッドに近い形で複数件のデータを取得する
+ * メソッドは存在していませんので、JPQL と呼ばれる少し特殊な
+ * SQL文（SELECT文）を Message クラスに用意する必要があります。
+ * SELECT mはsqlでいうSELECT *と同じですべての
+ * レコードを取得という意味
+ * ORDER BYは表示順を並べ替える
+ * ORDER BY カラム名 のあとに DESCとすると大きい順（降順）への並び替え
+ * られた状態で取得できる
+ * つまりIDの数が大きい順に一覧表示が並ぶということ
+ * */
+@NamedQueries({
+        @NamedQuery(
+                name = "getAllMessages",
+                query = "SELECT m FROM task AS m ORDER BY m.id DESC"
+                )
+})
+
 @Table(name = "tasks")//テーブル名を指定
 public class task {
 
