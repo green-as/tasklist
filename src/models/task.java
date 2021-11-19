@@ -47,8 +47,7 @@ public class task {
     プライマリキー値を生成する。*/
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    /*インスタンスなのでクラス型（参照型）のIntegerを使用?
-     質問中*/
+    /*Idにはクラス型（参照型）のIntegerを使用*/
     private Integer id;
 
     /*@Column アノテーションの ( ..., nullable = false) で

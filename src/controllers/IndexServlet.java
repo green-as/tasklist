@@ -40,12 +40,13 @@ public class IndexServlet extends HttpServlet {
          * createNamedQuery メソッドの引数に指定してあげることで、
          * データベースへの問い合わせを実行できます。*/
         List<task> tasks = em.createNamedQuery("getAllMessages", task.class).getResultList();
-
-        /*↓レスポンスとしてクライアントに返すメソッド*/
         /*その問い合わせ結果を getResultList() メソッドを使って
          * リスト形式で取得します。データベースに保存されたデータは
          * Hibernateによって自動で task クラスのオブジェクトに
          * なってこのリストの中に格納されるので便利です。*/
+
+
+        /*↓レスポンスとしてクライアントに返すメソッド*/
         response.getWriter().append(Integer.valueOf(tasks.size()).toString());
 
         em.close();
