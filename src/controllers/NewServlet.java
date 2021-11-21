@@ -45,7 +45,9 @@ public class NewServlet extends HttpServlet {
              * request.setAttribute("message", new Message());
              * を記述したのは、画面表示時のエラー回避のため、
              * とりあえず “文字数0のデータ” を
-             * フォームに渡すためです。*/
+             * フォームに渡すためです。
+             * 入力値エラーがあってフォームのページを
+             * 再度表示する際に役立ちます。*/
             /*Message のインスタンスを生成して
              * リクエストスコープに格納しています。*/
             request.setAttribute("task", new task());
