@@ -4,7 +4,7 @@
     <c:param name="content">
         <h2>id : ${task.id} のタスクの編集ページ</h2>
 
-    <%--セッションスコープへメッセージのIDの情報を保存して、/update へ渡す --%>
+    <%--セッションスコープへタスクのIDの情報を保存して、/update へ渡す --%>
         <form method="POST" action="${pageContext.request.contextPath}/update">
             <c:import url="_form.jsp" />
         </form>
