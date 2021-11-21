@@ -42,6 +42,7 @@ public class UpdateServlet extends HttpServlet {
 
         // フォームの内容を各フィールドに上書き
         String content = request.getParameter("content");
+        t.setContent(content);
 
         Timestamp currentTime = new Timestamp(System.currentTimeMillis());
         t.setUpdated_at(currentTime);

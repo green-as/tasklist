@@ -10,6 +10,16 @@
         </form>
 
         <p><a href="${pageContext.request.contextPath}/index">Back</a></p>
-
+        <p><a href="#" onclick="confirmDestroy();">delete</a></p>
+        <form method="POST" action="${pageContext.request.contextPath}/destroy">
+            <input type="hidden" name="_token" value="${_token}" />
+        </form>
+        <script>
+        function confirmDestroy() {
+            if(confirm("Are you sure you want to delete it?")) {
+                document.forms[1].submit();
+            }
+        }
+        </script>
     </c:param>
 </c:import>
