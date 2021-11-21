@@ -14,12 +14,12 @@
                 </li>
             </c:forEach>
         </ul>
-
+        <%--↓は<a></a>なのでcreate a new taskというページに移動するリンク --%>
         <p><a href="${pageContext.request.contextPath}/new">create a new task</a></p>
 
     </c:param>
 </c:import>
-<%--ｊｓｐとはhtmlにjavaをかけるようにしたもの
+<%--jspとはhtmlにjavaをかけるようにしたもの
 4行目の<c:import> を使うことで、url 属性に指定したファイルの内容をその位置で読み込むことができる
 <c:param name="content"> と書いたタグの中の記述内容が、
 app.jsp の ${param.content} のところに当てはまります。
