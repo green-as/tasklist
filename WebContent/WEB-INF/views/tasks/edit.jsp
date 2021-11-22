@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../layout/app.jsp">
     <c:param name="content">
+        <c:choose>
+        <c:when test="${task != null}">
         <h2>id : ${task.id} のタスクの編集ページ</h2>
 
     <%--セッションスコープへタスクのIDの情報を保存して、/update へ渡す --%>
@@ -21,5 +23,10 @@
             }
         }
         </script>
+        </c:when>
+        <c:otherwise>
+            <h2>お探しのデータは見つかりませんでした。</h2>
+        </c:otherwise>
+        </c:choose>
     </c:param>
 </c:import>
