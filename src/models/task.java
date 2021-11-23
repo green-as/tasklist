@@ -30,7 +30,15 @@ import javax.persistence.Table;
         @NamedQuery(
                 name = "getAllMessages",
                 query = "SELECT m FROM task AS m ORDER BY m.id DESC"
+                ),
+        /*↓「データベースにメッセージのデータ
+         * が何件入っているか」を知るためのJPQL*/
+        @NamedQuery(
+                name = "getMessagesCount",
+                query = "SELECT COUNT(m)FROM task AS m"
+
                 )
+
 })
 
 @Table(name = "tasks")//テーブル名を指定

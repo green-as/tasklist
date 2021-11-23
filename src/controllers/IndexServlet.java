@@ -38,21 +38,46 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
+        /*↓ページネーションのための設定
+        開くページ数を取得*/
+        int page = 1;
+        try {
+            page = Integer.parseInt(request.getParameter("page"));
+        }catch(NumberFormatException e) {}
+
         /*先ほどJPQLの文につけた名前 getAllMessages を
          * createNamedQuery メソッドの引数に指定してあげることで、
          * データベースへの問い合わせを実行できます。*/
-        List<task> tasks = em.createNamedQuery("getAllMessages", task.class).getResultList();
+
+        /*↓ページネーションのための設定
+         * 最大件数と開始位置を指定してメッセージを取得
+         * */
+        List<task> tasks = em.createNamedQuery("getAllMessages", task.class)
+                .setFirstResult(15 * (page - 1))
+                .setMaxResults(15)
+                .getResultList();
         /*その問い合わせ結果を getResultList() メソッドを使って
          * リスト形式で取得します。データベースに保存されたデータは
          * Hibernateによって自動で task クラスのオブジェクトに
          * なってこのリストの中に格納されるので便利です。*/
+
+        //全件数を取得
+        long tasks_count = (long)em.createNamedQuery("getMessagesCount", Long.class)
+                                         .getSingleResult();
+
         em.close();
 
-        //リクエストスコープを利用しサーブレットからJSPへ値を渡す
         request.setAttribute("tasks", tasks);
+        request.setAttribute("tasks_count", tasks_count);
+        request.setAttribute("page", page);
+
+        //リクエストスコープを利用しサーブレットからJSPへ値を渡す
+        //request.setAttribute("tasks", tasks);
         /*↑データベースから取得したメッセージ一覧（messages）
          * をリクエストスコープにセットし、index.jsp
          * を呼び出しています。*/
+
+
 
 
         // フラッシュメッセージがセッションスコープにセットされていたら
