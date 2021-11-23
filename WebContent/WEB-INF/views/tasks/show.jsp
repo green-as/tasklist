@@ -10,14 +10,16 @@
         <c:when test="${task != null}">
         <h2>id : ${task.id} のタスクの詳細ページ</h2>
 
-        <table>
-         <tbody>
-            <tr>
-                <th>タスク</th>
+        <table><%--表全体 --%>
+         <tbody><%--テーブルのボディ（メインの情報が入る行）を表す
+         テーブルのヘッダー（見出しが入る行）を表す<thead>はなし --%>
+            <tr><%--テーブルの行 --%>
+                <th>タスク</th><%--ヘッダー（見出し）となるセル（1つ1つのマス目）を表す --%>
                      <td><c:out value="${task.content}" /></td>
             </tr>
             <tr>
                 <th>作成日時</th>
+                <%--↓<td>はその他のセルを表す--%>
                     <td><fmt:formatDate value="${task.created_at}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
             </tr>
             <tr>
